@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://intra.invalid/schemas/tool-result.schema.json",
+  "title": "tool-result.schema.json",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "requestId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ok": {
+      "type": "boolean"
+    },
+    "data": {},
+    "artifact": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "format": {
+          "enum": [
+            "json",
+            "text",
+            "binary",
+            "jsonl"
+          ]
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "complete": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "path",
+        "format",
+        "bytes",
+        "complete"
+      ],
+      "additionalProperties": false
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "operationId": {
+          "type": "string"
+        },
+        "serviceId": {
+          "type": "string"
+        },
+        "profileId": {
+          "type": "string"
+        },
+        "httpStatus": {
+          "type": "integer"
+        },
+        "businessCode": {
+          "type": [
+            "string",
+            "number"
+          ]
+        },
+        "authRefreshed": {
+          "type": "boolean"
+        },
+        "timingMs": {
+          "type": "object",
+          "properties": {
+            "credential": {
+              "type": "number",
+              "minimum": 0
+            },
+            "http": {
+              "type": "number",
+              "minimum": 0
+            },
+            "output": {
+              "type": "number",
+              "minimum": 0
+            },
+            "total": {
+              "type": "number",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "credential",
+            "http",
+            "output",
+            "total"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1
+        },
+        "retryable": {
+          "type": "boolean"
+        },
+        "action": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "retryable"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "requestId",
+    "ok",
+    "meta"
+  ],
+  "additionalProperties": false,
+  "oneOf": [
+    {
+      "properties": {
+        "ok": {
+          "const": true
+        }
+      },
+      "not": {
+        "required": [
+          "error"
+        ]
+      }
+    },
+    {
+      "properties": {
+        "ok": {
+          "const": false
+        }
+      },
+      "required": [
+        "error"
+      ]
+    }
+  ]
+}

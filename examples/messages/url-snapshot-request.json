@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "requestId": "url-cookie-synthetic-example-01",
+  "type": "request",
+  "method": "cookies.snapshot",
+  "params": {
+    "profileId": "profile-example-01",
+    "storeId": "0",
+    "url": "https://api.example.test/items?page=10",
+    "deadlineMs": 10000
+  }
+}

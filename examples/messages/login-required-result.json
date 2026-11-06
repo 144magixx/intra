@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "requestId": "req-example-02",
+  "ok": false,
+  "meta": {
+    "serviceId": "risk-api",
+    "profileId": "profile-example-01",
+    "authRefreshed": false
+  },
+  "error": {
+    "code": "LOGIN_REQUIRED",
+    "message": "浏览器和缓存中的凭据均无法通过认证。",
+    "retryable": false,
+    "action": "在对应Profile登录目标站点，再执行auth sync。"
+  }
+}

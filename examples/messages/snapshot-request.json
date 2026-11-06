@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "requestId": "sync-example-01",
+  "type": "request",
+  "method": "cookies.snapshot",
+  "params": {
+    "profileId": "profile-example-01",
+    "storeId": "0",
+    "url": "https://risk-api.corp.example/",
+    "cookieNames": [
+      "sso.corp.example"
+    ],
+    "deadlineMs": 5000
+  }
+}

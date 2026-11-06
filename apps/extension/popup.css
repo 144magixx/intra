@@ -1,0 +1,15 @@
+body { width: 400px; margin: 0; font: 14px/1.6 system-ui, sans-serif; color: #182435; background: #f7f9fc; }
+main { padding: 20px; }
+h1 { font-size: 20px; margin-top: 0; }
+label { display: block; margin: 8px 0; }
+fieldset { border: 1px solid #c3ccda; border-radius: 6px; margin: 12px 0; padding: 8px 12px; }
+button { cursor: pointer; padding: 7px 12px; margin: 5px 0; }
+button:disabled { cursor: wait; }
+.confirmation { margin-top: 16px; }
+.domain-label, .hint { font-size: 12px; color: #43516a; }
+.hint { margin: 6px 0; }
+#custom-domain { box-sizing: border-box; width: 100%; padding: 7px; border: 1px solid #8996ab; border-radius: 4px; font: inherit; }
+.all-sites { border-color: #9a702d; background: #fffaf0; }
+code { font-size: 12px; overflow-wrap: anywhere; }
+#status { min-height: 2em; }
+details { margin-top: 14px; }

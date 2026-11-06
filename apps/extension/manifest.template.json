@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Intra Auth Bridge",
+  "version": "0.3.2",
+  "minimum_chrome_version": "119",
+  "incognito": "not_allowed",
+  "permissions": [
+    "cookies",
+    "nativeMessaging",
+    "storage"
+  ],
+  "optional_host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "连接 Intra",
+    "default_popup": "popup.html"
+  }
+}

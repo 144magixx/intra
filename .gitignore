@@ -1,0 +1,14 @@
+node_modules/
+dist/
+coverage/
+.DS_Store
+.env
+.env.*
+!.env.example
+*.har
+*.cookie
+*.cookies
+*.partial
+runtime/
+outputs/
+apps/extension/manifest.json

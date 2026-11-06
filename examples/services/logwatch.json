@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "logwatch",
+  "baseUrl": "https://logwatch.corp.example",
+  "allowedOrigins": [
+    "https://logwatch.corp.example"
+  ],
+  "auth": {
+    "cookieNames": [
+      "uas_jtoken"
+    ],
+    "identityProbeOperation": "logwatch.principal",
+    "authFailureRules": [
+      {
+        "kind": "probeFailure"
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "id": "devcloud.current-user",
+  "service": "devcloud",
+  "description": "只读验证DevCloud身份，不执行DeepTest用例",
+  "status": "verified",
+  "semantics": "read",
+  "arguments": {
+    "type": "object",
+    "properties": {},
+    "required": [],
+    "additionalProperties": false
+  },
+  "request": {
+    "method": "GET",
+    "path": "/api-gateway/jacp-platform/api/v1/user/info",
+    "query": {
+      "rich": false
+    },
+    "headers": {
+      "Accept": "application/json",
+      "appId": "jacp"
+    }
+  },
+  "bindings": [],
+  "response": {
+    "success": {
+      "httpStatuses": [
+        200
+      ],
+      "code": {
+        "pointer": "/code",
+        "equals": 200
+      }
+    },
+    "identityPointer": "/data/erp"
+  },
+  "provenance": {
+    "source": "historical-experiment",
+    "verifiedAt": "2026-11-04T12:25:56.171Z",
+    "evidence": [
+      "evidence/final-verification.json",
+      "evidence/minimal-auth.json"
+    ],
+    "notes": "旧实验工具验证接口与凭据；不是新CLI运行验证，数据总数会变化。"
+  }
+}

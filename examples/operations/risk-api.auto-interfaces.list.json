@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "id": "risk-api.auto-interfaces.list",
+  "service": "risk-api",
+  "description": "查询配置化接口列表（非截图中的普通接口管理列表）",
+  "status": "verified",
+  "semantics": "read",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "page": {
+        "type": "integer",
+        "minimum": 1,
+        "default": 1
+      },
+      "pageSize": {
+        "type": "integer",
+        "minimum": 1,
+        "default": 10
+      }
+    },
+    "required": [],
+    "additionalProperties": false
+  },
+  "request": {
+    "method": "POST",
+    "path": "/link_out/autoInterfaceManage/getPageAutoInterfaceList",
+    "headers": {
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "pageNo": 1,
+      "pageSize": 10,
+      "params": {
+        "likeKey": "",
+        "valid": "",
+        "type": "",
+        "protocol": "",
+        "onlineType": ""
+      }
+    }
+  },
+  "bindings": [
+    {
+      "argument": "page",
+      "target": "body",
+      "pointer": "/pageNo"
+    },
+    {
+      "argument": "pageSize",
+      "target": "body",
+      "pointer": "/pageSize"
+    }
+  ],
+  "response": {
+    "success": {
+      "httpStatuses": [
+        200
+      ],
+      "code": {
+        "pointer": "/code",
+        "equals": "200"
+      }
+    },
+    "itemsPointer": "/data/listResult",
+    "totalPointer": "/data/pageBean/totalRecord"
+  },
+  "provenance": {
+    "source": "historical-experiment",
+    "verifiedAt": "2026-11-04T12:25:56.171Z",
+    "evidence": [
+      "evidence/final-verification.json",
+      "evidence/minimal-auth.json"
+    ],
+    "notes": "旧实验工具验证接口与凭据；不是新CLI运行验证，数据总数会变化。"
+  }
+}

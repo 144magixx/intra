@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "requestId": "hello-example-01",
+  "type": "request",
+  "method": "bridge.hello",
+  "params": {
+    "profileId": "profile-example-01",
+    "extensionVersion": "0.3.0",
+    "protocolVersions": [
+      1
+    ],
+    "storeIds": [
+      "0"
+    ]
+  }
+}

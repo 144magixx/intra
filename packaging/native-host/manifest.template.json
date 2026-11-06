@@ -1,0 +1,9 @@
+{
+  "name": "com.intra.bridge",
+  "description": "Intra local credential bridge (template only)",
+  "path": "/ABSOLUTE/PATH/TO/intra-native-host",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://REPLACE_WITH_REAL_EXTENSION_ID/"
+  ]
+}

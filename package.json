@@ -1,0 +1,22 @@
+{
+  "name": "@local/intra",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "repository": { "type": "git", "url": "https://github.com/144magixx/intra.git" },
+  "type": "module",
+  "description": "Local browser-credential HTTP client — development MVP",
+  "engines": { "node": ">=22" },
+  "bin": { "intra": "dist/apps/cli/src/main.js", "intra-mcp": "dist/apps/mcp/src/main.js" },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node --test dist/tests/*.test.js",
+    "check:docs": "node tools/check-docs.mjs",
+    "check": "npm run test && npm run check:docs",
+    "intra": "node dist/apps/cli/src/main.js",
+    "mcp": "node dist/apps/mcp/src/main.js"
+  },
+  "dependencies": { "ajv": "^8.17.1", "tough-cookie": "^6.0.0" },
+  "devDependencies": { "@types/node": "^22.0.0", "typescript": "^5.9.0" }
+}

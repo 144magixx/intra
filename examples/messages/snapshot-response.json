@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "requestId": "sync-example-01",
+  "type": "response",
+  "ok": true,
+  "result": {
+    "profileId": "profile-example-01",
+    "storeId": "0",
+    "snapshotId": "snapshot-example-01",
+    "observedAt": "2026-11-04T12:00:00Z",
+    "cookies": [
+      {
+        "name": "sso.corp.example",
+        "value": "EXAMPLE_NOT_A_REAL_CREDENTIAL",
+        "domain": ".corp.example",
+        "path": "/",
+        "hostOnly": false,
+        "secure": false,
+        "httpOnly": false,
+        "sameSite": "unspecified",
+        "session": true,
+        "storeId": "0"
+      }
+    ]
+  }
+}

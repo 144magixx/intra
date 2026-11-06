@@ -1,0 +1,17 @@
+{
+  "code": "200",
+  "msg": "成功",
+  "data": {
+    "listResult": [
+      {
+        "id": "example-1",
+        "name": "合成接口"
+      }
+    ],
+    "pageBean": {
+      "pageNo": 1,
+      "pageSize": 1,
+      "totalRecord": 2
+    }
+  }
+}

@@ -1,0 +1,202 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://intra.invalid/schemas/operation.schema.json",
+  "title": "operation.schema.json",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "service": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "verified"
+      ]
+    },
+    "semantics": {
+      "enum": [
+        "read",
+        "write",
+        "unknown"
+      ]
+    },
+    "arguments": {
+      "type": "object"
+    },
+    "request": {
+      "type": "object",
+      "properties": {
+        "method": {
+          "enum": [
+            "GET",
+            "POST",
+            "PUT",
+            "PATCH",
+            "DELETE",
+            "HEAD",
+            "OPTIONS"
+          ]
+        },
+        "path": {
+          "type": "string",
+          "pattern": "^/[^/]*"
+        },
+        "query": {
+          "type": "object"
+        },
+        "headers": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "body": {}
+      },
+      "required": [
+        "method",
+        "path"
+      ],
+      "additionalProperties": false
+    },
+    "bindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "argument": {
+            "type": "string",
+            "minLength": 1
+          },
+          "target": {
+            "enum": [
+              "query",
+              "body"
+            ]
+          },
+          "pointer": {
+            "type": "string",
+            "pattern": "^(|/.*)$"
+          }
+        },
+        "required": [
+          "argument",
+          "target",
+          "pointer"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "response": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "object",
+          "properties": {
+            "httpStatuses": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "integer",
+                "minimum": 100,
+                "maximum": 599
+              }
+            },
+            "code": {
+              "type": "object",
+              "properties": {
+                "pointer": {
+                  "type": "string",
+                  "pattern": "^(|/.*)$"
+                },
+                "equals": {}
+              },
+              "required": [
+                "pointer",
+                "equals"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "httpStatuses"
+          ],
+          "additionalProperties": false
+        },
+        "itemsPointer": {
+          "type": "string",
+          "pattern": "^(|/.*)$"
+        },
+        "totalPointer": {
+          "type": "string",
+          "pattern": "^(|/.*)$"
+        },
+        "identityPointer": {
+          "type": "string",
+          "pattern": "^(|/.*)$"
+        }
+      },
+      "required": [
+        "success"
+      ],
+      "additionalProperties": false
+    },
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "enum": [
+            "documentation",
+            "source",
+            "curl",
+            "har",
+            "observation",
+            "manual",
+            "historical-experiment"
+          ]
+        },
+        "verifiedAt": {
+          "type": "string"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "source"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "id",
+    "service",
+    "description",
+    "status",
+    "semantics",
+    "arguments",
+    "request",
+    "bindings",
+    "response",
+    "provenance"
+  ],
+  "additionalProperties": false
+}

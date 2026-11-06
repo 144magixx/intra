@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "requestId": "req-example-01",
+  "ok": true,
+  "data": {
+    "count": 10,
+    "page": 1,
+    "pageSize": 10,
+    "total": 589,
+    "hasMore": true
+  },
+  "artifact": {
+    "path": "/example/outputs/response.json",
+    "format": "json",
+    "bytes": 2000000,
+    "complete": true
+  },
+  "meta": {
+    "operationId": "risk-api.auto-interfaces.list",
+    "serviceId": "risk-api",
+    "profileId": "profile-example-01",
+    "httpStatus": 200,
+    "businessCode": "200",
+    "authRefreshed": false,
+    "timingMs": {
+      "credential": 8,
+      "http": 180,
+      "output": 12,
+      "total": 200
+    }
+  }
+}

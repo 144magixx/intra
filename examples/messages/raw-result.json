@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "requestId": "synthetic-raw-receipt",
+  "ok": true,
+  "data": { "status": "received", "businessSuccess": "unknown" },
+  "artifact": { "path": "./outputs/raw-example.json", "format": "json", "bytes": 12, "complete": true },
+  "meta": { "serviceId": "example-service", "httpStatus": 200, "authRefreshed": false }
+}

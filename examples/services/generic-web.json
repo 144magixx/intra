@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1,
+  "id": "generic-web-example",
+  "baseUrl": "https://api.example.test",
+  "allowedOrigins": ["https://api.example.test"],
+  "auth": {}
+}

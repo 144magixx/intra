@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "requestId": "jd-domain-synthetic-snapshot-01",
+  "type": "request",
+  "method": "cookies.snapshot",
+  "params": {
+    "profileId": "profile-example-01",
+    "storeId": "0",
+    "url": "https://example-service.corp.example/api/example",
+    "cookieNames": ["sso.corp.example"],
+    "deadlineMs": 10000
+  }
+}

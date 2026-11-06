@@ -1,0 +1,385 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://intra.invalid/schemas/ipc.schema.json",
+  "title": "ipc.schema.json",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "requestId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "type": {
+      "enum": [
+        "request",
+        "response",
+        "event"
+      ]
+    },
+    "method": {
+      "enum": [
+        "bridge.hello",
+        "cookies.snapshot",
+        "credentials.resolve",
+        "http.execute",
+        "cookies.changed"
+      ]
+    },
+    "params": {
+      "type": "object"
+    },
+    "ok": {
+      "type": "boolean"
+    },
+    "result": {
+      "type": "object"
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1
+        },
+        "retryable": {
+          "type": "boolean"
+        },
+        "action": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "retryable"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "requestId",
+    "type"
+  ],
+  "additionalProperties": false,
+  "oneOf": [
+    {
+      "properties": {
+        "type": {
+          "const": "request"
+        }
+      },
+      "required": [
+        "method",
+        "params"
+      ],
+      "not": {
+        "anyOf": [
+          {
+            "required": [
+              "result"
+            ]
+          },
+          {
+            "required": [
+              "error"
+            ]
+          },
+          {
+            "required": [
+              "ok"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "response"
+        },
+        "ok": {
+          "const": true
+        }
+      },
+      "required": [
+        "ok",
+        "result"
+      ],
+      "not": {
+        "required": [
+          "error"
+        ]
+      }
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "response"
+        },
+        "ok": {
+          "const": false
+        }
+      },
+      "required": [
+        "ok",
+        "error"
+      ],
+      "not": {
+        "required": [
+          "result"
+        ]
+      }
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "event"
+        },
+        "method": {
+          "const": "cookies.changed"
+        }
+      },
+      "required": [
+        "method",
+        "params"
+      ],
+      "not": {
+        "required": [
+          "ok"
+        ]
+      }
+    }
+  ],
+  "$defs": {
+    "cookie": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": "string"
+        },
+        "domain": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "hostOnly": {
+          "type": "boolean"
+        },
+        "secure": {
+          "type": "boolean"
+        },
+        "httpOnly": {
+          "type": "boolean"
+        },
+        "sameSite": {
+          "enum": [
+            "no_restriction",
+            "lax",
+            "strict",
+            "unspecified"
+          ]
+        },
+        "session": {
+          "type": "boolean"
+        },
+        "expirationDate": {
+          "type": "number"
+        },
+        "storeId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "partitionKey": {
+          "type": "object",
+          "properties": {
+            "topLevelSite": {
+              "type": "string"
+            },
+            "hasCrossSiteAncestor": {
+              "type": "boolean"
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "name",
+        "value",
+        "domain",
+        "path",
+        "hostOnly",
+        "secure",
+        "httpOnly",
+        "sameSite",
+        "session",
+        "storeId"
+      ],
+      "additionalProperties": false
+    },
+    "snapshotParams": {
+      "type": "object",
+      "properties": {
+        "profileId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "storeId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "pattern": "^https?://"
+        },
+        "cookieNames": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[!#$%&'*+.^_`|~0-9A-Za-z-]{1,256}(?![\\s\\S])"
+          }
+        },
+        "deadlineMs": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 30000
+        }
+      },
+      "required": [
+        "profileId",
+        "storeId",
+        "url",
+        "deadlineMs"
+      ],
+      "additionalProperties": false
+    },
+    "snapshotResult": {
+      "type": "object",
+      "properties": {
+        "profileId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "storeId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "snapshotId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observedAt": {
+          "type": "string"
+        },
+        "cookies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/cookie"
+          }
+        }
+      },
+      "required": [
+        "profileId",
+        "storeId",
+        "snapshotId",
+        "observedAt",
+        "cookies"
+      ],
+      "additionalProperties": false
+    },
+    "helloParams": {
+      "type": "object",
+      "properties": {
+        "profileId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "extensionVersion": {
+          "type": "string"
+        },
+        "protocolVersions": {
+          "type": "array",
+          "items": {
+            "const": 1
+          }
+        },
+        "storeIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "profileId",
+        "extensionVersion",
+        "protocolVersions",
+        "storeIds"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "request"
+          },
+          "method": {
+            "const": "cookies.snapshot"
+          }
+        },
+        "required": [
+          "method"
+        ]
+      },
+      "then": {
+        "properties": {
+          "params": {
+            "$ref": "#/$defs/snapshotParams"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "request"
+          },
+          "method": {
+            "const": "bridge.hello"
+          }
+        },
+        "required": [
+          "method"
+        ]
+      },
+      "then": {
+        "properties": {
+          "params": {
+            "$ref": "#/$defs/helloParams"
+          }
+        }
+      }
+    }
+  ]
+}

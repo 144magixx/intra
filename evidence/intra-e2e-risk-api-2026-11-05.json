@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "kind": "intra-runtime-e2e",
+  "status": "awaiting-extension-permission-and-retest",
+  "startedAt": "2026-11-05T12:25:14.719Z",
+  "timeZone": "Asia/Shanghai",
+  "implementation": {
+    "project": "Intra",
+    "baseCommit": "0e6085b5712a5449732186cb016781bbdc3a9e8b",
+    "nodeVersion": "24.21.0",
+    "installedChromeVersion": "147.0.7727.56",
+    "extensionVersionDuringAttempt": "0.1.0",
+    "transport": "Intra CLI -> Unix Socket -> NativeHost -> Chrome extension; business HTTP was not reached"
+  },
+  "scope": {
+    "operationId": "risk-api.auto-interfaces.list",
+    "url": "https://risk-api.corp.example/link_out/autoInterfaceManage/getPageAutoInterfaceList",
+    "method": "POST",
+    "semantics": "read",
+    "arguments": { "page": 10, "pageSize": 10 },
+    "profileAlias": "work",
+    "storeId": "0",
+    "requiredCookieNames": ["sso.corp.example"]
+  },
+  "observations": [
+    { "stage": "native-host-connection", "result": "passed", "realBrowserConnection": true, "userConfirmed": true },
+    { "stage": "profile-pairing", "result": "passed", "accountVerified": false },
+    { "stage": "auth-sync", "at": "2026-11-05T12:25:14.856Z", "result": "failed", "exitCode": 3, "errorCode": "COOKIE_NOT_FOUND", "wallMs": 134, "stderrBytes": 0 },
+    { "stage": "exact-request-url-cookie-scope-check", "at": "2026-11-05T12:26:23.478Z", "result": "empty", "matchedCookieCount": 0, "credentialValuesRecorded": false },
+    { "stage": "keychain-read-write", "result": "not-run", "reason": "Snapshot validation failed before credential store access" },
+    { "stage": "business-query-page10", "result": "not-sent", "businessRequests": 0, "responseArtifact": null }
+  ],
+  "sourceAnalysis": {
+    "confirmedDefect": "The extension requests only service-subdomain host permissions. Chrome cookies.getAll additionally checks the cookie's own domain and Secure-derived scheme. Parent-domain .corp.example cookies are filtered out without matching parent-origin permissions.",
+    "cookieDomainEvidence": "Historical sso.corp.example cookie metadata uses domain .corp.example; not proof of the current browser login state.",
+    "uncertainty": "Zero matches do not establish that the user is logged out or that adding permission alone will make the request succeed. Re-test after the user reloads and grants the updated optional permissions.",
+    "sourceURL": "https://raw.githubusercontent.com/chromium/chromium/main/extensions/browser/api/cookies/cookies_helpers.cc",
+    "functions": ["AppendCookieToVectorIfMatchAndHasHostPermission", "GetURLFromCanonicalCookie"]
+  },
+  "remediation": {
+    "extensionVersion": "0.2.0",
+    "optionalOrigins": ["http://*.corp.example/*", "https://*.corp.example/*"],
+    "authorizationScope": "corp.example and its subdomains, explicitly selected by the user",
+    "bridgeScopeReplacesThreeHardcodedSites": true,
+    "businessAllowedOriginsAutomaticallyExpanded": false,
+    "cookieSelection": "Explicit names from the registered service and cookies applicable to the requested URL; no global cookie header or cross-site cache merge",
+    "requiresUserReloadAndPermissionGrant": true,
+    "syntheticValidation": {
+      "command": "npm run check",
+      "exitCode": 0,
+      "testsPassed": 103,
+      "testsFailed": 0,
+      "bridgeTestsPassed": 21,
+      "documentationChecksPassed": true,
+      "provesRealInterfaceSuccess": false
+    },
+    "realRetest": "pending"
+  }
+}

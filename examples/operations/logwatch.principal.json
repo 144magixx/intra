@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "logwatch.principal",
+  "service": "logwatch",
+  "description": "只读查询当前登录身份，不查询日志",
+  "status": "verified",
+  "semantics": "read",
+  "arguments": {
+    "type": "object",
+    "properties": {},
+    "required": [],
+    "additionalProperties": false
+  },
+  "request": {
+    "method": "GET",
+    "path": "/framework/principal",
+    "headers": {
+      "Accept": "application/json"
+    }
+  },
+  "bindings": [],
+  "response": {
+    "success": {
+      "httpStatuses": [
+        200
+      ]
+    },
+    "identityPointer": "/username"
+  },
+  "provenance": {
+    "source": "historical-experiment",
+    "verifiedAt": "2026-11-04T12:25:56.171Z",
+    "evidence": [
+      "evidence/final-verification.json",
+      "evidence/minimal-auth.json"
+    ],
+    "notes": "旧实验工具验证接口与凭据；不是新CLI运行验证，数据总数会变化。"
+  }
+}

@@ -1,0 +1,651 @@
+{
+  "at": "2026-11-04T12:22:33.465Z",
+  "source": "risk-api shared domain cookies",
+  "targets": [
+    [
+      "risk",
+      "https://risk-api.corp.example/link_out/autoInterfaceManage/getPageAutoInterfaceList"
+    ],
+    [
+      "logwatch",
+      "https://logwatch.corp.example/digger/techApp/localLog?app=linkout-extdata"
+    ],
+    [
+      "devcloud",
+      "http://devcloud.corp.example/api-gateway/jacp-platform/api/v1/user/info?rich=false"
+    ]
+  ],
+  "rows": [
+    {
+      "target": "risk",
+      "variant": "none",
+      "cookieNames": [],
+      "status": 302,
+      "ms": 107,
+      "bytes": 0
+    },
+    {
+      "target": "logwatch",
+      "variant": "none",
+      "cookieNames": [],
+      "status": 403,
+      "ms": 59,
+      "bytes": 116,
+      "code": 403,
+      "message": "403 FORBIDDEN",
+      "keys": [
+        "status",
+        "error",
+        "path",
+        "localized",
+        "timestamp"
+      ]
+    },
+    {
+      "target": "devcloud",
+      "variant": "none",
+      "cookieNames": [],
+      "status": 200,
+      "ms": 71,
+      "bytes": 49,
+      "code": 304,
+      "keys": [
+        "code",
+        "data"
+      ]
+    },
+    {
+      "target": "risk",
+      "variant": "sso-single",
+      "cookieNames": [
+        "sso.corp.example"
+      ],
+      "status": 200,
+      "ms": 206,
+      "bytes": 372485,
+      "code": "200",
+      "message": "成功",
+      "keys": [
+        "code",
+        "msg",
+        "data"
+      ],
+      "dataKeys": [
+        "listResult",
+        "pageBean"
+      ],
+      "count": 1
+    },
+    {
+      "target": "logwatch",
+      "variant": "sso-single",
+      "cookieNames": [
+        "sso.corp.example"
+      ],
+      "status": 403,
+      "ms": 12,
+      "bytes": 116,
+      "code": 403,
+      "message": "403 FORBIDDEN",
+      "keys": [
+        "status",
+        "error",
+        "path",
+        "localized",
+        "timestamp"
+      ]
+    },
+    {
+      "target": "devcloud",
+      "variant": "sso-single",
+      "cookieNames": [
+        "sso.corp.example"
+      ],
+      "status": 200,
+      "ms": 75,
+      "bytes": 1062,
+      "code": 200,
+      "keys": [
+        "code",
+        "data"
+      ],
+      "dataKeys": [
+        "email",
+        "erp",
+        "headImage",
+        "name",
+        "org",
+        "orgTierCode",
+        "orgTierName",
+        "orgTierNameZh",
+        "organization",
+        "positionCode",
+        "positionName",
+        "sex",
+        "userCode",
+        "userErp",
+        "userName"
+      ],
+      "erp": "REDACTED_USER"
+    },
+    {
+      "target": "risk",
+      "variant": "ticket-single",
+      "cookieNames": [
+        "ssa.ticket"
+      ],
+      "status": 302,
+      "ms": 15,
+      "bytes": 0
+    },
+    {
+      "target": "logwatch",
+      "variant": "ticket-single",
+      "cookieNames": [
+        "ssa.ticket"
+      ],
+      "status": 403,
+      "ms": 12,
+      "bytes": 116,
+      "code": 403,
+      "message": "403 FORBIDDEN",
+      "keys": [
+        "status",
+        "error",
+        "path",
+        "localized",
+        "timestamp"
+      ]
+    },
+    {
+      "target": "devcloud",
+      "variant": "ticket-single",
+      "cookieNames": [],
+      "status": 200,
+      "ms": 28,
+      "bytes": 49,
+      "code": 304,
+      "keys": [
+        "code",
+        "data"
+      ]
+    },
+    {
+      "target": "risk",
+      "variant": "global-single",
+      "cookieNames": [
+        "ssa.global.ticket"
+      ],
+      "status": 302,
+      "ms": 18,
+      "bytes": 0
+    },
+    {
+      "target": "logwatch",
+      "variant": "global-single",
+      "cookieNames": [
+        "ssa.global.ticket"
+      ],
+      "status": 403,
+      "ms": 15,
+      "bytes": 116,
+      "code": 403,
+      "message": "403 FORBIDDEN",
+      "keys": [
+        "status",
+        "error",
+        "path",
+        "localized",
+        "timestamp"
+      ]
+    },
+    {
+      "target": "devcloud",
+      "variant": "global-single",
+      "cookieNames": [
+        "ssa.global.ticket"
+      ],
+      "status": 200,
+      "ms": 44,
+      "bytes": 49,
+      "code": 304,
+      "keys": [
+        "code",
+        "data"
+      ]
+    },
+    {
+      "target": "risk",
+      "variant": "ejdst",
+      "cookieNames": [
+        "ejdst_essa",
+        "ejdst_jsmt",
+        "ejdst_jst"
+      ],
+      "status": 302,
+      "ms": 10,
+      "bytes": 0
+    },
+    {
+      "target": "logwatch",
+      "variant": "ejdst",
+      "cookieNames": [
+        "ejdst_essa",
+        "ejdst_jsmt",
+        "ejdst_jst"
+      ],
+      "status": 403,
+      "ms": 12,
+      "bytes": 116,
+      "code": 403,
+      "message": "403 FORBIDDEN",
+      "keys": [
+        "status",
+        "error",
+        "path",
+        "localized",
+        "timestamp"
+      ]
+    },
+    {
+      "target": "devcloud",
+      "variant": "ejdst",
+      "cookieNames": [
+        "ejdst_essa",
+        "ejdst_jsmt",
+        "ejdst_jst"
+      ],
+      "status": 200,
+      "ms": 33,
+      "bytes": 49,
+      "code": 304,
+      "keys": [
+        "code",
+        "data"
+      ]
+    },
+    {
+      "target": "risk",
+      "variant": "sso-plus-ejdst",
+      "cookieNames": [
+        "sso.corp.example",
+        "ssa.ticket",
+        "ssa.global.ticket",
+        "ejdst_essa",
+        "ejdst_jsmt",
+        "ejdst_jst"
+      ],
+      "status": 200,
+      "ms": 134,
+      "bytes": 372485,
+      "code": "200",
+      "message": "成功",
+      "keys": [
+        "code",
+        "msg",
+        "data"
+      ],
+      "dataKeys": [
+        "listResult",
+        "pageBean"
+      ],
+      "count": 1
+    },
+    {
+      "target": "logwatch",
+      "variant": "sso-plus-ejdst",
+      "cookieNames": [
+        "sso.corp.example",
+        "ssa.ticket",
+        "ssa.global.ticket",
+        "ejdst_essa",
+        "ejdst_jsmt",
+        "ejdst_jst"
+      ],
+      "status": 403,
+      "ms": 14,
+      "bytes": 116,
+      "code": 403,
+      "message": "403 FORBIDDEN",
+      "keys": [
+        "status",
+        "error",
+        "path",
+        "localized",
+        "timestamp"
+      ]
+    },
+    {
+      "target": "devcloud",
+      "variant": "sso-plus-ejdst",
+      "cookieNames": [
+        "sso.corp.example",
+        "ssa.global.ticket",
+        "ejdst_essa",
+        "ejdst_jsmt",
+        "ejdst_jst"
+      ],
+      "status": 200,
+      "ms": 57,
+      "bytes": 1062,
+      "code": 200,
+      "keys": [
+        "code",
+        "data"
+      ],
+      "dataKeys": [
+        "email",
+        "erp",
+        "headImage",
+        "name",
+        "org",
+        "orgTierCode",
+        "orgTierName",
+        "orgTierNameZh",
+        "organization",
+        "positionCode",
+        "positionName",
+        "sex",
+        "userCode",
+        "userErp",
+        "userName"
+      ],
+      "erp": "REDACTED_USER"
+    },
+    {
+      "target": "risk",
+      "variant": "sso-plus-erp",
+      "cookieNames": [
+        "__ERP",
+        "erp_erp",
+        "sso.corp.example",
+        "ssa.ticket",
+        "_erp",
+        "erp",
+        "ssa.global.ticket"
+      ],
+      "status": 200,
+      "ms": 107,
+      "bytes": 372485,
+      "code": "200",
+      "message": "成功",
+      "keys": [
+        "code",
+        "msg",
+        "data"
+      ],
+      "dataKeys": [
+        "listResult",
+        "pageBean"
+      ],
+      "count": 1
+    },
+    {
+      "target": "logwatch",
+      "variant": "sso-plus-erp",
+      "cookieNames": [
+        "__ERP",
+        "erp_erp",
+        "sso.corp.example",
+        "ssa.ticket",
+        "_erp",
+        "erp",
+        "ssa.global.ticket"
+      ],
+      "status": 403,
+      "ms": 17,
+      "bytes": 116,
+      "code": 403,
+      "message": "403 FORBIDDEN",
+      "keys": [
+        "status",
+        "error",
+        "path",
+        "localized",
+        "timestamp"
+      ]
+    },
+    {
+      "target": "devcloud",
+      "variant": "sso-plus-erp",
+      "cookieNames": [
+        "__ERP",
+        "erp_erp",
+        "sso.corp.example",
+        "_erp",
+        "erp",
+        "ssa.global.ticket"
+      ],
+      "status": 200,
+      "ms": 73,
+      "bytes": 1062,
+      "code": 200,
+      "keys": [
+        "code",
+        "data"
+      ],
+      "dataKeys": [
+        "email",
+        "erp",
+        "headImage",
+        "name",
+        "org",
+        "orgTierCode",
+        "orgTierName",
+        "orgTierNameZh",
+        "organization",
+        "positionCode",
+        "positionName",
+        "sex",
+        "userCode",
+        "userErp",
+        "userName"
+      ],
+      "erp": "REDACTED_USER"
+    },
+    {
+      "target": "risk",
+      "variant": "all",
+      "cookieNames": [
+        "__ERP",
+        "sns_forum_client_type",
+        "jd.erp.lang",
+        "jdd69fo72b8lfeoe",
+        "erp_erp",
+        "__jdv",
+        "focus-login-switch",
+        "qid_uid",
+        "qid_sc",
+        "userIdType",
+        "3AB9D23F7A4B3C9B",
+        "qid_evord",
+        "lng",
+        "third_name",
+        "third_token",
+        "third_safetyToken",
+        "third_timestamp",
+        "basic_info",
+        "sso.corp.example",
+        "ssa.ticket",
+        "logbook_u",
+        "uas_jtoken",
+        "_erp",
+        "erp",
+        "sgm_erp",
+        "me_user_domain",
+        "me_token",
+        "focus-team-id",
+        "token",
+        "focus-client",
+        "__jdu",
+        "ssa.origin-api",
+        "ssa.origin-gateway",
+        "magicflowToken",
+        "ssa.global.ticket",
+        "ssa.jd-sep-web-shop",
+        "iam_token",
+        "focus-token-type",
+        "RT",
+        "devcloud-lang",
+        "__jda",
+        "__jdc",
+        "ejdst_essa",
+        "ejdst_jsmt",
+        "ejdst_jst"
+      ],
+      "status": 200,
+      "ms": 166,
+      "bytes": 372485,
+      "code": "200",
+      "message": "成功",
+      "keys": [
+        "code",
+        "msg",
+        "data"
+      ],
+      "dataKeys": [
+        "listResult",
+        "pageBean"
+      ],
+      "count": 1
+    },
+    {
+      "target": "logwatch",
+      "variant": "all",
+      "cookieNames": [
+        "__ERP",
+        "sns_forum_client_type",
+        "jd.erp.lang",
+        "jdd69fo72b8lfeoe",
+        "erp_erp",
+        "__jdv",
+        "focus-login-switch",
+        "qid_uid",
+        "qid_sc",
+        "userIdType",
+        "3AB9D23F7A4B3C9B",
+        "qid_evord",
+        "lng",
+        "third_name",
+        "third_token",
+        "third_safetyToken",
+        "third_timestamp",
+        "basic_info",
+        "sso.corp.example",
+        "ssa.ticket",
+        "logbook_u",
+        "uas_jtoken",
+        "_erp",
+        "erp",
+        "sgm_erp",
+        "me_user_domain",
+        "me_token",
+        "focus-team-id",
+        "token",
+        "focus-client",
+        "__jdu",
+        "ssa.origin-api",
+        "ssa.origin-gateway",
+        "magicflowToken",
+        "ssa.global.ticket",
+        "ssa.jd-sep-web-shop",
+        "iam_token",
+        "focus-token-type",
+        "RT",
+        "devcloud-lang",
+        "__jda",
+        "__jdc",
+        "ejdst_essa",
+        "ejdst_jsmt",
+        "ejdst_jst"
+      ],
+      "status": 404,
+      "ms": 23,
+      "bytes": 112,
+      "code": 404,
+      "message": "Not Found",
+      "keys": [
+        "timestamp",
+        "status",
+        "error",
+        "path"
+      ]
+    },
+    {
+      "target": "devcloud",
+      "variant": "all",
+      "cookieNames": [
+        "__ERP",
+        "sns_forum_client_type",
+        "jd.erp.lang",
+        "jdd69fo72b8lfeoe",
+        "erp_erp",
+        "__jdv",
+        "focus-login-switch",
+        "qid_uid",
+        "qid_sc",
+        "userIdType",
+        "3AB9D23F7A4B3C9B",
+        "qid_evord",
+        "lng",
+        "third_name",
+        "third_token",
+        "third_safetyToken",
+        "third_timestamp",
+        "basic_info",
+        "sso.corp.example",
+        "logbook_u",
+        "uas_jtoken",
+        "_erp",
+        "erp",
+        "sgm_erp",
+        "me_user_domain",
+        "me_token",
+        "focus-team-id",
+        "token",
+        "focus-client",
+        "__jdu",
+        "ssa.origin-api",
+        "ssa.origin-gateway",
+        "magicflowToken",
+        "ssa.global.ticket",
+        "ssa.jd-sep-web-shop",
+        "iam_token",
+        "focus-token-type",
+        "RT",
+        "devcloud-lang",
+        "__jda",
+        "__jdc",
+        "ejdst_essa",
+        "ejdst_jsmt",
+        "ejdst_jst"
+      ],
+      "status": 200,
+      "ms": 165,
+      "bytes": 1062,
+      "code": 200,
+      "keys": [
+        "code",
+        "data"
+      ],
+      "dataKeys": [
+        "email",
+        "erp",
+        "headImage",
+        "name",
+        "org",
+        "orgTierCode",
+        "orgTierName",
+        "orgTierNameZh",
+        "organization",
+        "positionCode",
+        "positionName",
+        "sex",
+        "userCode",
+        "userErp",
+        "userName"
+      ],
+      "erp": "REDACTED_USER"
+    }
+  ]
+}

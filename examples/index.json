@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "examples": [
+    {
+      "file": "services/generic-web.json",
+      "schema": "service.schema.json"
+    },
+    {
+      "file": "messages/url-snapshot-request.json",
+      "schema": "ipc.schema.json"
+    },
+    {
+      "file": "services/risk-api.json",
+      "schema": "service.schema.json"
+    },
+    {
+      "file": "services/logwatch.json",
+      "schema": "service.schema.json"
+    },
+    {
+      "file": "services/devcloud.json",
+      "schema": "service.schema.json"
+    },
+    {
+      "file": "operations/risk-api.auto-interfaces.list.json",
+      "schema": "operation.schema.json"
+    },
+    {
+      "file": "operations/logwatch.principal.json",
+      "schema": "operation.schema.json"
+    },
+    {
+      "file": "operations/devcloud.current-user.json",
+      "schema": "operation.schema.json"
+    },
+    {
+      "file": "messages/snapshot-request.json",
+      "schema": "ipc.schema.json"
+    },
+    {
+      "file": "messages/shared-domain-snapshot-request.json",
+      "schema": "ipc.schema.json"
+    },
+    {
+      "file": "messages/snapshot-response.json",
+      "schema": "ipc.schema.json"
+    },
+    {
+      "file": "messages/hello-request.json",
+      "schema": "ipc.schema.json"
+    },
+    {
+      "file": "messages/success-result.json",
+      "schema": "tool-result.schema.json"
+    },
+    {
+      "file": "messages/raw-result.json",
+      "schema": "tool-result.schema.json"
+    },
+    {
+      "file": "messages/login-required-result.json",
+      "schema": "tool-result.schema.json"
+    }
+  ]
+}

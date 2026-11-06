@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "devcloud",
+  "baseUrl": "http://devcloud.corp.example",
+  "allowedOrigins": [
+    "http://devcloud.corp.example"
+  ],
+  "auth": {
+    "cookieNames": [
+      "sso.corp.example"
+    ],
+    "identityProbeOperation": "devcloud.current-user",
+    "authFailureRules": [
+      {
+        "kind": "businessCode",
+        "pointer": "/code",
+        "equals": 304
+      }
+    ]
+  },
+  "protocolExceptions": [
+    {
+      "origin": "http://devcloud.corp.example",
+      "reason": "历史验证仅此HTTP origin成功；HTTPS尚未验证；只允许非Secure Cookie，禁止自动降级其他站点。"
+    }
+  ]
+}

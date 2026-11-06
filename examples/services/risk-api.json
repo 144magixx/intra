@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "risk-api",
+  "baseUrl": "https://risk-api.corp.example",
+  "allowedOrigins": [
+    "https://risk-api.corp.example"
+  ],
+  "auth": {
+    "cookieNames": [
+      "sso.corp.example"
+    ],
+    "authFailureRules": [
+      {
+        "kind": "loginRedirect",
+        "origin": "https://ssa.corp.example",
+        "pathPrefix": "/sso/login"
+      }
+    ]
+  }
+}

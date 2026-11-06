@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "test": "risk-api-page10-real-e2e",
+  "status": "passed-for-this-request",
+  "implementationRevision": "65176418d5b48f689835c93347850ca29f7a68d3",
+  "extensionVersion": "0.3.0",
+  "nodeVersion": "24.21.0",
+  "startedAt": "2026-11-05T13:44:36.277Z",
+  "completedAt": "2026-11-05T13:44:37.756Z",
+  "timeZone": "Asia/Shanghai",
+  "request": {
+    "method": "POST",
+    "url": "https://risk-api.corp.example/link_out/autoInterfaceManage/getPageAutoInterfaceList",
+    "arguments": {
+      "page": 10,
+      "pageSize": 10
+    }
+  },
+  "result": {
+    "httpStatus": 200,
+    "businessCode": "200",
+    "count": 10,
+    "pagination": {
+      "pageNo": 10,
+      "pageSize": 10,
+      "totalRecord": 589,
+      "totalPage": 59
+    },
+    "complete": true,
+    "bytes": 4235500,
+    "sha256": "3bce57689f99af789988e4c6b16e2a9784b9cd2c637bbdd20658b738d7a786a6",
+    "fileMode": "600"
+  },
+  "timing": {
+    "successfulCliWallMs": 1478,
+    "credential": 153.9925,
+    "http": 1202.854458,
+    "output": 0.8399999999999181,
+    "total": 1358.366041
+  },
+  "credentialSync": true,
+  "keychainCacheRead": {
+    "ok": true,
+    "checkedAt": "2026-11-05T13:50:49.781Z",
+    "source": "keychain",
+    "profileAlias": "work-current",
+    "cookieNames": [
+      "sso.corp.example"
+    ],
+    "accountVerified": false,
+    "additionalBusinessRequests": 0
+  },
+  "limits": [
+    "Only this read operation and page were verified; no automatic pagination.",
+    "No independent identity probe is configured for Risk API.",
+    "Bilibili, Zhihu, browser-closed execution and generic URL mode were not exercised in this real test."
+  ]
+}

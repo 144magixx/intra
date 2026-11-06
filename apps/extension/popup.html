@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Intra 浏览器配对</title><link rel="stylesheet" href="popup.css"></head>
+<body><main>
+  <h1>连接此浏览器 Profile</h1>
+  <p>将你授权的网站登录态提供给本机 Intra。请确认这是要使用的浏览器 Profile。此页面不显示或导出 Cookie。</p>
+  <form id="pairing">
+    <fieldset>
+      <legend>选择允许同步的域</legend>
+      <div id="services"></div>
+      <label><input id="custom-enabled" type="checkbox">自定义根域或选定域名及其子域</label>
+      <label class="domain-label" for="custom-domain">域名（不含协议、路径或通配符）</label>
+      <input id="custom-domain" type="text" placeholder="example.com 或 api.example.com" autocomplete="off" spellcheck="false" aria-describedby="domain-help">
+      <p id="domain-help" class="hint">支持 DNS 域名和 localhost；此输入不支持 IP。不会自动推断父域：如需 .example.com 共享 Cookie，请明确填写 example.com。所选域包含 HTTP 与 HTTPS。</p>
+    </fieldset>
+    <fieldset class="all-sites">
+      <legend>可选：扩大到所有网站</legend>
+      <label><input id="all-websites" type="checkbox" name="service" value="all">所有网站（HTTP/HTTPS）</label>
+      <p class="hint">默认关闭。勾选后，点击下方按钮并批准 Chrome 权限，才允许为任意 HTTP/HTTPS URL 同步 Cookie。每次仍只读取指定 URL 的 Cookie，不导出整个浏览器存储。</p>
+    </fieldset>
+    <label class="confirmation"><input id="confirmed" type="checkbox" required>我确认将此 Profile 与本机 Intra 配对，并使用以上范围。</label>
+    <button id="connect" type="submit">授权并连接</button>
+  </form>
+  <p>每次同步按具体 URL 和存储筛选；可指定 Cookie 名称，省略时取适用于该 URL 的全部 Cookie。授权不会发现网络请求，也不保证已登录或业务调用成功。</p>
+  <p id="status" role="status"></p>
+  <p>Profile ID：<code id="profile">尚未生成</code></p>
+  <button id="disconnect" type="button">断开连接</button>
+  <details><summary>复制 Profile 后重新配对</summary><p>生成新 ID 后，原 CLI 别名需要重新绑定。</p><button id="reset" type="button">生成新 Profile ID</button></details>
+</main><script type="module" src="popup.js"></script></body>
+</html>

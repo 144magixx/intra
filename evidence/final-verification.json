@@ -1,0 +1,103 @@
+{
+  "at": "2026-11-04T12:25:56.171Z",
+  "credentialSource": "one read of risk-api applicable cookies from browser; values kept in process memory",
+  "transport": "Node HTTP fetch, no browser requests, no redirects, no cookies from responses reused",
+  "cookieMetadata": [
+    {
+      "name": "sso.corp.example",
+      "domain": ".corp.example",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "expiresAt": null
+    },
+    {
+      "name": "uas_jtoken",
+      "domain": ".corp.example",
+      "path": "/",
+      "secure": false,
+      "httpOnly": true,
+      "expirationDate": 1827554228.129901,
+      "expiresAt": "2027-11-30T05:57:08.129Z"
+    }
+  ],
+  "rows": [
+    {
+      "target": "risk-list",
+      "url": "https://risk-api.corp.example/link_out/autoInterfaceManage/getPageAutoInterfaceList",
+      "variant": "uas-only",
+      "cookieNames": [
+        "uas_jtoken"
+      ],
+      "httpStatus": 302,
+      "ms": 61,
+      "success": false
+    },
+    {
+      "target": "logwatch-principal",
+      "url": "https://logwatch.corp.example/framework/principal",
+      "variant": "uas-only",
+      "cookieNames": [
+        "uas_jtoken"
+      ],
+      "httpStatus": 200,
+      "ms": 53,
+      "username": "REDACTED_USER",
+      "success": true
+    },
+    {
+      "target": "devcloud-current-user",
+      "url": "http://devcloud.corp.example/api-gateway/jacp-platform/api/v1/user/info?rich=false",
+      "variant": "uas-only",
+      "cookieNames": [
+        "uas_jtoken"
+      ],
+      "httpStatus": 200,
+      "ms": 41,
+      "code": 304,
+      "success": false
+    },
+    {
+      "target": "risk-list",
+      "url": "https://risk-api.corp.example/link_out/autoInterfaceManage/getPageAutoInterfaceList",
+      "variant": "sso-plus-uas",
+      "cookieNames": [
+        "sso.corp.example",
+        "uas_jtoken"
+      ],
+      "httpStatus": 200,
+      "ms": 154,
+      "code": "200",
+      "listCount": 1,
+      "totalRecord": 589,
+      "success": true
+    },
+    {
+      "target": "logwatch-principal",
+      "url": "https://logwatch.corp.example/framework/principal",
+      "variant": "sso-plus-uas",
+      "cookieNames": [
+        "sso.corp.example",
+        "uas_jtoken"
+      ],
+      "httpStatus": 200,
+      "ms": 13,
+      "username": "REDACTED_USER",
+      "success": true
+    },
+    {
+      "target": "devcloud-current-user",
+      "url": "http://devcloud.corp.example/api-gateway/jacp-platform/api/v1/user/info?rich=false",
+      "variant": "sso-plus-uas",
+      "cookieNames": [
+        "sso.corp.example",
+        "uas_jtoken"
+      ],
+      "httpStatus": 200,
+      "ms": 57,
+      "code": 200,
+      "username": "REDACTED_USER",
+      "success": true
+    }
+  ]
+}
